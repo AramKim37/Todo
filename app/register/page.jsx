@@ -1,14 +1,15 @@
 "use client";
 
-import Link from "next/link";
 import React from "react";
 import { useState } from "react";
 
 const Register = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  console.log(username);
+  const [info, setInfo] = useState({ username: "", email: "", password: "" });
+
+  const handleInput = (e) => {
+    setInfo(e.target.value);
+  };
+  console.log(info);
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-10">
       <div className="py-5">
@@ -16,12 +17,29 @@ const Register = () => {
       </div>
       <form className="flex flex-col gap-5 w-[50%]">
         <input
+          name="username"
+          value={info.username}
+          type="text"
           placeholder="Username"
           className="border-2 p-5 rounded-xl"
-          onChange={(e) => setUsername(e.target.value)}
+          onChange={(e) => handleInput(e)}
         />
-        <input placeholder="Email" className="border-2 p-5 rounded-xl" />
-        <input placeholder="Password" className="border-2 p-5 rounded-xl" />
+        <input
+          name="email"
+          type="text"
+          value={info.email}
+          placeholder="Email"
+          className="border-2 p-5 rounded-xl"
+          onChange={(e) => handleInput(e)}
+        />
+        <input
+          name="password"
+          type="password"
+          value={info.password}
+          placeholder="Password"
+          className="border-2 p-5 rounded-xl"
+          onChange={(e) => handleInput(e)}
+        />
         <button className="border-2 bg-pink-500 text-white p-5 rounded-xl">
           Register
         </button>
