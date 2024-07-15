@@ -5,6 +5,8 @@ import { useState } from "react";
 
 const Register = () => {
   const [info, setInfo] = useState({ username: "", email: "", password: "" });
+  const [feedback, setFeedback] = useState({ type: "", msg: "" });
+  const [pending, setPending] = useState(false);
 
   const handleInput = (e) => {
     setInfo(e.target.value);
@@ -24,6 +26,7 @@ const Register = () => {
           className="border-2 p-5 rounded-xl"
           onChange={(e) => handleInput(e)}
         />
+        {/* <label className={info.username ? "active" : ""}>Username</label> */}
         <input
           name="email"
           type="text"
@@ -32,6 +35,8 @@ const Register = () => {
           className="border-2 p-5 rounded-xl"
           onChange={(e) => handleInput(e)}
         />
+        {/* <label className={info.email ? "active" : ""}>Email</label> */}
+
         <input
           name="password"
           type="password"
@@ -40,6 +45,8 @@ const Register = () => {
           className="border-2 p-5 rounded-xl"
           onChange={(e) => handleInput(e)}
         />
+        {/* <label className={info.password ? "active" : ""}>Password</label> */}
+
         <button className="border-2 bg-pink-500 text-white p-5 rounded-xl">
           Register
         </button>
