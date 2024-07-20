@@ -1,7 +1,11 @@
+"use client";
 import Link from "next/link";
 import React from "react";
+import { useFormState } from "react-dom";
 
 const Login = () => {
+  const [errorMessage, dispatch] = useFormState(increment, undefined);
+
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-10">
       <div className="py-5">
