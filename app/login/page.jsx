@@ -2,16 +2,17 @@
 import Link from "next/link";
 import React from "react";
 import { useFormState } from "react-dom";
+import { authenticate } from "../serverActions/userAction";
 
 const Login = () => {
-  const [errorMessage, dispatch] = useFormState(increment, undefined);
+  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-10">
       <div className="py-5">
         <h1 className="font-bold text-2xl">LOGIN</h1>
       </div>
-      <form className="flex flex-col gap-5 w-[50%]">
+      <form className="flex flex-col gap-5 w-[50%]" action={dispatch}>
         <input placeholder="Email" className="border-2 p-5 rounded-xl"></input>
         <input
           placeholder="Password"
