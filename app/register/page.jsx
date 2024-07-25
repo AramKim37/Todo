@@ -9,9 +9,9 @@ const Register = () => {
   const [pending, setPending] = useState(false);
 
   const handleInput = (e) => {
-    setInfo(e.target.value);
+    setInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  console.log(info);
+  console.log({ info });
   return (
     <div className="flex flex-col items-center justify-center w-full h-full p-10">
       <div className="py-5">

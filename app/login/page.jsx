@@ -18,6 +18,7 @@ const Login = () => {
           placeholder="Password"
           className="border-2 p-5 rounded-xl"
         ></input>
+        {errorMessage && <span>{errorMessage}</span>}
         <button className="border-2 bg-pink-500 text-white p-5 rounded-xl">
           Login
         </button>
