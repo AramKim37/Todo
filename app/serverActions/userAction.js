@@ -1,6 +1,7 @@
 "use server";
 
 import { signIn } from "@/auth";
+import connectToDB from "@/utils/connectToDB";
 import { AuthError } from "next-auth";
 
 export async function authenticate(prevState, formData) {
@@ -17,4 +18,12 @@ export async function authenticate(prevState, formData) {
     }
     throw error;
   }
+}
+
+export async function registerUser(info) {
+  try {
+    await connectToDB();
+    const { username, email, password } = info;
+    const exist = await User.findOne({ $or: [{ email }, { username }] });
+  } catch (error) {}
 }
