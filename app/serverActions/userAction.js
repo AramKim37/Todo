@@ -3,6 +3,7 @@
 import { signIn } from "@/auth";
 import connectToDB from "@/utils/connectToDB";
 import { AuthError } from "next-auth";
+import User from "@/models/userModel";
 
 export async function authenticate(prevState, formData) {
   try {
@@ -25,5 +26,15 @@ export async function registerUser(info) {
     await connectToDB();
     const { username, email, password } = info;
     const exist = await User.findOne({ $or: [{ email }, { username }] });
-  } catch (error) {}
+    if (exist) return { error: "Username or email already registered." };
+    const hashedPasswords = await bcrypt.hash(password, 10);
+    await User.create({
+      username,
+      email,
+      password: hashedPasswords,
+    });
+    return;
+  } catch (error) {
+    console.log({ error });
+  }
 }
