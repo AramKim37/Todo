@@ -1,7 +1,6 @@
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
+import Sidebar from "./components/sidebar/Sidebar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,9 +18,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${poppins.className} flex flex-col gap-[3rem] min-h-screen`}
       >
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <main className="p-10 flex gap-10 min-h-screen">
+          <Sidebar />
+          {children}
+        </main>
       </body>
     </html>
   );
