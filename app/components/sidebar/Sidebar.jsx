@@ -14,6 +14,7 @@ const Sidebar = () => {
         <span>Aram</span>
         <span>Kim</span>
       </h1>
+      <h1>Home</h1>
     </div>
   );
 };
